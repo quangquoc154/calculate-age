@@ -85,29 +85,29 @@
             // Check input
             function checkInp(value) {
                 console.log(isNaN(value))
-                if(isNaN(value))
+                if (isNaN(value))
                     return true
             }
 
             // Check day
-            function dayOfMonth(birthMonth, birthYear) {
-                switch (birthMonth.value) {
-                    case 1:
-                    case 3:
-                    case 5:
-                    case 7:
-                    case 8:
-                    case 10:
-                    case 12:
+            function dayOfMonth(month, year) {
+                switch (month) {
+                    case '1':
+                    case '3':
+                    case '5':
+                    case '7':
+                    case '8':
+                    case '10':
+                    case '12':
                         return 31;
-                    case 4:
-                    case 6:
-                    case 9:
-                    case 11:
+                    case '4':
+                    case '6':
+                    case '9':
+                    case '11':
                         return 30;
                     default:
                         {
-                            if (birthYear.value % 4 == 0 && birthYear.value % 100 != 0 || birthYear.value % 400 == 0)
+                            if (year % 4 == 0 && year % 100 != 0 || year % 400 == 0)
                                 return 29;
                             else
                                 return 28;
@@ -115,21 +115,23 @@
                 }
             }
 
+            // console.log(dayOfMonth(birthMonth.value, birthYear.value));
+
             if (!checkInp(birthDay.value) && !checkInp(birthMonth.value) && !checkInp(birthYear.value)) {
-                if (birthDay.value < 1 || birthDay.value > dayOfMonth(birthMonth, birthYear)) {
-                    if (dayOfMonth(birthMonth, birthYear) === 28 && birthDay.value > dayOfMonth(birthMonth, birthYear))
-                        renderToast("Năm không nhuận tháng 2 có 28 ngày. Vui lòng nhập lại ngày")
-                    else
-                        renderToast("Vui lòng nhập đúng giá trị ngày")
-                    birthDay.value = ""
+                if (birthYear.value <= 0 || birthYear.value > 9999) {
+                    renderToast("Vui lòng nhập đúng giá trị năm")
+                    birthYear.value = ""
                 }
                 else if (birthMonth.value < 1 || birthMonth.value > 12) {
                     renderToast("Vui lòng nhập đúng giá trị tháng")
                     birthMonth.value = ""
                 }
-                else if (birthYear.value <= 0 || birthYear.value > 9999) {
-                    renderToast("Vui lòng nhập đúng giá trị năm")
-                    birthYear.value = ""
+                else if (birthDay.value < 1 || birthDay.value > dayOfMonth(birthMonth.value, birthYear.value)) {
+                    if (dayOfMonth(birthMonth.value, birthYear.value) === 28 && birthDay.value > dayOfMonth(birthMonth.value, birthYear.value))
+                        renderToast("Năm không nhuận tháng 2 có 28 ngày. Vui lòng nhập lại ngày")
+                    else
+                        renderToast("Vui lòng nhập đúng giá trị ngày")
+                    birthDay.value = ""
                 }
                 else {
                     birthDay.value = ""
