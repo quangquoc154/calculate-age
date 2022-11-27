@@ -21,7 +21,7 @@
         <input type="text" id="birth_date" class="birth_month" name="">
         <span>Năm</span>
         <input type="text" id="birth_date" class="birth_year" name="">
-        <button id="calculate">Kết quả</button>
+        <button class="calculate">Kết quả</button>
         <div class="result-age"></div>
         <div class="toast-message"></div>
     </div>
@@ -29,7 +29,7 @@
         const $ = document.querySelector.bind(document)
         const $$ = document.querySelectorAll.bind(document)
 
-        const calculate = $('#calculate')
+        const calculate = $('.calculate')
         const resultAge = $('.result-age')
         const birthDay = $('.birth_day')
         const birthMonth = $('.birth_month')
