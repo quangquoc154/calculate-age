@@ -22,20 +22,20 @@
         <span>Năm</span>
         <input type="text" id="birth_date" class="birth_year" name="">
         <button id="calculate">Kết quả</button>
-        <div class="resultAge"></div>
-        <div id="toast"></div>
+        <div class="result-age"></div>
+        <div class="toast-message"></div>
     </div>
     <script type="text/javascript">
         const $ = document.querySelector.bind(document)
         const $$ = document.querySelectorAll.bind(document)
 
         const calculate = $('#calculate')
-        const resultAge = $('.resultAge')
+        const resultAge = $('.result-age')
         const birthDay = $('.birth_day')
         const birthMonth = $('.birth_month')
         const birthYear = $('.birth_year')
+        const mainToast = $('.toast-message')
 
-        const mainToast = document.getElementById('toast');
         const toast = document.createElement('div');
 
         if (mainToast) {
@@ -59,14 +59,14 @@
 
             function renderToast(message) {
                 toast.innerHTML = `
-                    <div class="toast__icon">
+                    <div class="toast-icon">
                         <i class="fa-solid fa-circle-exclamation"></i>
                     </div>
-                    <div class="toast__body">
-                        <h3 class="toast__title">Lỗi</h3>
-                        <p class="toast__msg">${message}</p>
+                    <div class="toast-body">
+                        <h3 class="toast-title">Lỗi</h3>
+                        <p class="toast-msg">${message}</p>
                     </div>
-                    <div class="toast__close">
+                    <div class="toast-close">
                         <i class="fa-solid fa-xmark"></i>
                     </div>
                 `;
