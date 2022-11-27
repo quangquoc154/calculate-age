@@ -120,23 +120,17 @@
             if (!checkInp(birthDay.value) && !checkInp(birthMonth.value) && !checkInp(birthYear.value)) {
                 if (birthYear.value <= 0 || birthYear.value > 9999) {
                     renderToast("Vui lòng nhập đúng giá trị năm")
-                    birthYear.value = ""
                 }
                 else if (birthMonth.value < 1 || birthMonth.value > 12) {
                     renderToast("Vui lòng nhập đúng giá trị tháng")
-                    birthMonth.value = ""
                 }
                 else if (birthDay.value < 1 || birthDay.value > dayOfMonth(birthMonth.value, birthYear.value)) {
                     if (dayOfMonth(birthMonth.value, birthYear.value) === 28 && birthDay.value > dayOfMonth(birthMonth.value, birthYear.value))
                         renderToast("Năm không nhuận tháng 2 có 28 ngày. Vui lòng nhập lại ngày")
                     else
                         renderToast("Vui lòng nhập đúng giá trị ngày")
-                    birthDay.value = ""
                 }
                 else {
-                    birthDay.value = ""
-                    birthMonth.value = ""
-                    birthYear.value = ""
                     birthDay.focus()
                     resultAge.innerHTML = "Tuổi của bạn là: " + ageYear + " tuổi "
                 }
@@ -145,7 +139,6 @@
 
         birthDay.addEventListener("change", function (e) {
             if (e.target.value) {
-                // console.log(e.target.value)
                 resultAge.innerHTML = ""
             }
         })
