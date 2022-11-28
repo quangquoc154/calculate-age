@@ -47,8 +47,8 @@
 
             // Remove toast when clicked
             errorMessage.onclick = function (e) {
-                if (e.target.closest('.toast__close')) {
-                    mainToast.removeChild(toast);
+                if (e.target.closest('.toast-close')) {
+                    mainToast.removeChild(errorMessage);
                     clearTimeout(autoRemoveId);
                 }
             }
