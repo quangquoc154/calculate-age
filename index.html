@@ -36,17 +36,17 @@
         const birthYear = $('.birth_year')
         const mainToast = $('.toast-message')
 
-        const toast = document.createElement('div');
+        const errorMessage = document.createElement('div');
 
         if (mainToast) {
             // Auto remove toast
             const autoRemoveId = setTimeout(function () {
-                mainToast.removeChild(toast);
+                mainToast.removeChild(errorMessage);
             }, 3000);
             clearTimeout(autoRemoveId)
 
             // Remove toast when clicked
-            toast.onclick = function (e) {
+            errorMessage.onclick = function (e) {
                 if (e.target.closest('.toast__close')) {
                     mainToast.removeChild(toast);
                     clearTimeout(autoRemoveId);
@@ -54,11 +54,11 @@
             }
             const delay = (3000 / 1000).toFixed(2);
 
-            toast.classList.add('toast');
-            toast.style.animation = `slideInLeft ease .3s, fadeOut linear 1s ${delay}s forwards`;
+            errorMessage.classList.add('error-message');
+            errorMessage.style.animation = `slideInLeft ease .3s, fadeOut linear 1s ${delay}s forwards`;
 
             function renderToast(message) {
-                toast.innerHTML = `
+                errorMessage.innerHTML = `
                     <div class="toast-icon">
                         <i class="fa-solid fa-circle-exclamation"></i>
                     </div>
@@ -70,7 +70,7 @@
                         <i class="fa-solid fa-xmark"></i>
                     </div>
                 `;
-                mainToast.appendChild(toast);
+                mainToast.appendChild(errorMessage);
             }
         }
 
