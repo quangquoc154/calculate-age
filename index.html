@@ -83,11 +83,11 @@
             ageYear = ageYear.getUTCFullYear() - 1970;
 
             // Check input
-            // function checkInp(value) {
-            //     console.log(isNaN(value))
-            //     if (isNaN(value))
-            //         return true
-            // }
+            function checkInp(value) {
+                if (isNaN(value))
+                    return false
+                return true
+            }
 
             // Check day
             function dayOfMonth(month, year) {
@@ -115,26 +115,24 @@
                 }
             }
 
-            // console.log(dayOfMonth(birthMonth.value, birthYear.value));
-
-            // if (!checkInp(birthDay.value) && !checkInp(birthMonth.value) && !checkInp(birthYear.value)) {
-            if (birthDay.value < 1 || birthDay.value > dayOfMonth(birthMonth.value, birthYear.value)) {
-                if (dayOfMonth(birthMonth.value, birthYear.value) === 28 && birthDay.value > dayOfMonth(birthMonth.value, birthYear.value))
-                    renderToast("Năm không nhuận tháng 2 có 28 ngày. Vui lòng nhập lại ngày")
-                else
-                    renderToast("Vui lòng nhập đúng giá trị ngày")
-            }
-            else if (birthMonth.value < 1 || birthMonth.value > 12) {
-                renderToast("Vui lòng nhập đúng giá trị tháng")
-            }
-            else if (birthYear.value <= 0) {
-                renderToast("Vui lòng nhập đúng giá trị năm")
-            }
-            else {
-                birthDay.focus()
-                resultAge.innerHTML = "Tuổi của bạn là: " + ageYear + " tuổi "
-            }
-            // } else renderToast("Giá trị nhập vào phải là số")
+            if (checkInp(birthDay.value) && checkInp(birthMonth.value) && checkInp(birthYear.value)) {
+                if (birthDay.value < 1 || birthDay.value > dayOfMonth(birthMonth.value, birthYear.value)) {
+                    if (dayOfMonth(birthMonth.value, birthYear.value) === 28 && birthDay.value > dayOfMonth(birthMonth.value, birthYear.value))
+                        renderToast("Năm không nhuận tháng 2 có 28 ngày. Vui lòng nhập lại ngày")
+                    else
+                        renderToast("Vui lòng nhập đúng giá trị ngày")
+                }
+                else if (birthMonth.value < 1 || birthMonth.value > 12) {
+                    renderToast("Vui lòng nhập đúng giá trị tháng")
+                }
+                else if (birthYear.value <= 0) {
+                    renderToast("Vui lòng nhập đúng giá trị năm")
+                }
+                else {
+                    birthDay.focus()
+                    resultAge.innerHTML = "Tuổi của bạn là: " + ageYear + " tuổi "
+                }
+            } else renderToast("Giá trị nhập vào phải là số")
         });
 
         birthDay.addEventListener("change", function (e) {
